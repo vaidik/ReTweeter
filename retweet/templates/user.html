@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table border="0" width="100%">
+	<tr>
+		<td>Hello {{ user.username }} | <a href="/accounts/logout/">Logout</a></td>
+		<td align="right">Tweet | Status</td>
+	</tr>
+</table>
+<hr />
+{% block user_content %}{% endblock %}
+{% endblock %}

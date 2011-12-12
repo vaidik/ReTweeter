@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="POST" action="/tweet_submit">
+    <input type="text" name="status" />
+    <input type="submit" />
+</form>
+{% endblock %}
