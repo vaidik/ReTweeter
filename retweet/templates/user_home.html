@@ -1,5 +1,8 @@
 {% extends "user.html" %}
 
 {% block user_content %}
-<p>Content</p>
+<form method="POST" action="/user/tweet_submit/">
+	{{ form.as_p  }}
+	<input type="submit" value="Submit Tweet!" />
+</form>
 {% endblock %}

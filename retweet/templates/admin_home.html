@@ -1,0 +1,33 @@
+{% extends "admin.html" %}
+
+{% block admin_content %}
+<form method="POST" action="/admin/tweet/submit/">
+  {{ form.as_p  }}
+  <input type="submit" value="Submit Tweet!" />
+</form>
+
+<hr />
+
+<table width="100%">
+	<tr style="font-weight: bold;">
+		<td align="center">ID</td>
+		<td>Status</td>
+		<td>From</td>
+		<td align="center" colspan="2" width="20%">Actions</td>
+	</tr>
+	{% for tweet in tweets %}
+	<tr>
+		<td align="center">{{ tweet.id }}</td>
+		<td>{{ tweet.obj.status }}</td>
+		<td>{{ tweet.user.username }}</td>
+
+		<td align="center">
+			<a href="/admin/tweet/approve/{{ tweet.id }}">Tweet</a>
+		</td>
+		<td align="center">
+			<a href="/admin/tweet/disapprove/{{ tweet.id }}">Disaprove</a>
+		</td>
+	</tr>
+	{% endfor %}
+</table>
+{% endblock %}
