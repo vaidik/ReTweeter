@@ -1,0 +1,37 @@
+{% extends "logged_in_page.html" %}
+
+{% block content %}
+
+	<div style="width: 75%; float: left;">
+		<table style="width: 100%;" border="1">
+			<tr>
+				<td width="55%">Tweet</td>
+				<td width="10%">Status</td>
+				<td width="15%" align="center">Twitter Link</td>
+				<td>Approved By</td>
+			</tr>
+			{% for tweet in tweets %}
+			<tr>
+				<td>{{ tweet.tweet }}</td>
+				<td>{{ tweet.status }}</td>
+				<td align="center">{{ tweet.twitter_id }}</td>
+				<td>{{ tweet.approver.username }}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+
+	<div style="width: 24%; float: right;">
+		<h2>Submit your tweet</h2>
+		<div>Share it on behalf of @somecompany</div>
+
+		<form method="POST" action="/tweets/submit/">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<input type="submit" value="Share" />
+		</form>
+	</div>
+
+	<div style="clear: both;"></div>
+
+{% endblock %}
