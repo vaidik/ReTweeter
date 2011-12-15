@@ -5,4 +5,4 @@ from django.contrib.auth.decorators import login_required
 
 def home(request):
 	
-	return render_to_response('index.html')
+	return render_to_response('base.html')
