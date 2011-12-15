@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block head %}
+	<link rel="stylesheet" type="text/css" media="all" href="/static/page.css" />
+	{% block page_head %}
+	{% endblock %}
+{% endblock %}
+
+{% block body %}
+	<div class="menu_bar">
+		<div class="user_menu">
+			{% block user_menu %}{% endblock %}
+		</div>
+
+		<div class="user_links">
+			Hello <strong>{{ user.username }}</strong> | <a href="/accounts/logout/">Logout</a>
+		</div>
+
+		<div style="clear: both;"></div>
+	</div>
+
+	<div class="content">
+		{% block content %}
+		{% endblock %}
+	</div>
+{% endblock %}
