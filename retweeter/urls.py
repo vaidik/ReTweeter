@@ -1,10 +1,12 @@
 from django.conf.urls.defaults import patterns, include, url
+from retweeter import views
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
 
 urlpatterns = patterns('',
+		(r'^$', views.home),
     # Examples:
     # url(r'^$', 'retweeter.views.home', name='home'),
     # url(r'^retweeter/', include('retweeter.foo.urls')),
