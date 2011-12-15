@@ -4,6 +4,8 @@
 		<title>ReTweeter {% block title %}{% endblock %}</title>
 
 		<link rel="stylesheet" type="text/css" media="all" href="/static/styles.css" />
+		{% block head %}
+		{% endblock %}
 	</head>
 
 	<body>
@@ -15,7 +17,9 @@
 				{% block body %}
 				{% endblock %}
 			</div>
-			<div class="footer"></div>
+			<div class="footer">
+				&nbsp;
+			</div>
 		</div>
 	</body>
 </html>

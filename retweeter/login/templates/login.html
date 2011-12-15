@@ -1,0 +1,32 @@
+{% extends "login_base.html" %}
+{% block content %}
+	{% if form.errors %}
+		<div class="error">
+			Invalid username or password.
+		</div>
+	{% endif %}
+
+	<div class="box">
+		<div class="login_form">
+			<form action="" method="POST">
+				{% csrf_token %}
+				<div id="username">
+					{{ form.username.label_tag }}:
+					<br />
+					{{ form.username }}
+				</div>
+				<div id="password">
+					{{ form.password.label_tag }}:
+					<br />
+					{{ form.password }}
+				</div>
+				<div>
+					<input type="submit" value="Login" />
+				</div>
+			</form>
+			<div class="login_links">
+				<a href="/accounts/register/">Register</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}

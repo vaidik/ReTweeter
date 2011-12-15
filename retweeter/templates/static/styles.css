@@ -42,9 +42,22 @@ a, a:hover, a:visited {
 }
 
 .body {
-	margin: 10px;
+	margin: 20px;
 }
 
 .footer {
 	margin: 10px;
+}
+
+.error {
+	padding: 8px;
+	width: 40%;
+	border: 1px red solid;
+	color: red;
+
+	text-align: center;
+
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 20px;
 }

@@ -1,5 +1,7 @@
 from django.conf.urls.defaults import patterns, include, url
 from retweeter import views
+from retweeter import login
+from django.contrib.auth.views import logout
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -7,6 +9,10 @@ from retweeter import views
 
 urlpatterns = patterns('',
 		(r'^$', views.home),
+		(r'^accounts/login/$', 'login.views.login', {'template_name': 'login.html'}),
+		(r'^accounts/logout/$', logout, {'next_page': '/'}),
+		(r'^accounts/register/$', 'login.views.register'),
+		(r'^accounts/profile/$', 'login.views.profile'),
     # Examples:
     # url(r'^$', 'retweeter.views.home', name='home'),
     # url(r'^retweeter/', include('retweeter.foo.urls')),
