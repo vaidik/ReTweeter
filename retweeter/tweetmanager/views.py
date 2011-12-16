@@ -10,6 +10,7 @@ from retweeter.tweetmanager.forms import TweetForm
 from retweeter.tweetmanager.models import Tweets
 from retweeter.utils.helpers import render_page
 from retweeter.tweetmanager import twitter
+from django.utils.http import urlencode
 import datetime
 
 @login_required
@@ -29,13 +30,20 @@ def tweets_submit(request):
 	user = User.objects.get(username=request.user.username)
 	t = Tweets(tweet=request.POST.get('tweet'), status=0, user=user)
 
-	t.save()
-	return HttpResponseRedirect('/tweets/?msg=success')
+	params = ''
+	try:
+		t.save()
+		params = urlencode({'msg': 'Your tweet was successfully submitted for review.'})
+	except:
+		params = urlencode({'error': 'Your tweet could not be submitted for review. Please make sure that the length of your tweet is less than 140 characters.'})
+
+	return HttpResponseRedirect('/tweets/?' + params)
 
 @login_required
 def moderate(request):
 	if not request.user.is_staff:
-		return HttpResponseRedirect('/')
+		params = urlencode({'error': 'You are not permitted to access the admin features.'})
+		return HttpResponseRedirect('/?' + params)
 
 	data = {}
 
@@ -47,7 +55,8 @@ def moderate(request):
 @login_required
 def dashboard(request):
 	if not request.user.is_staff:
-		return HttpResponseRedirect('/')
+		params = urlencode({'error': 'You are not permitted to access the admin features.'})
+		return HttpResponseRedirect('/?' + params)
 
 	data = {}
 
@@ -59,7 +68,8 @@ def dashboard(request):
 @login_required
 def approve(request, tweet_id):
 	if not request.user.is_staff:
-		return HttpResponseRedirect('/')
+		params = urlencode({'error': 'You are not permitted to access the admin features.'})
+		return HttpResponseRedirect('/?' + params)
 
 	t = Tweets.objects.get(id=tweet_id)
 
@@ -70,21 +80,24 @@ def approve(request, tweet_id):
 		t.twitter_id = tweet_id
 		t.status = 1
 		t.approver = User.objects.get(username=request.user.username)
+		params = urlencode({'msg': 'The tweet was successfully published on Twitter.com.'})
 	except:
-		pass
+		params = urlencode({'error': 'The tweet could not be published on Twitter.com. Please try again after some time.'})
 
 	t.save()
 
-	return HttpResponseRedirect('/tweets/moderate/')
+	return HttpResponseRedirect('/tweets/moderate/?' + params)
 
 @login_required
 def disapprove(request, tweet_id):
 	if not request.user.is_staff:
-		return HttpResponseRedirect('/')
+		params = urlencode({'error': 'You are not permitted to access the admin features.'})
+		return HttpResponseRedirect('/?' + params)
 
 	t = Tweets.objects.get(id=tweet_id)
 	t.status = -1
 	t.approver = User.objects.get(username=request.user.username)
 	t.save()
 
-	return HttpResponseRedirect('/tweets/moderate/')
+	params = urlencode({'msg': 'The tweet was successfully rejected.'})
+	return HttpResponseRedirect('/tweets/moderate/?' + params)
