@@ -6,6 +6,8 @@
 <a href="/tweets/moderate/">Moderate</a>
 |
 <a href="/tweets/">Tweets</a>
+{% if user.is_superuser %}
 |
 <a href="/users/">Users</a>
+{% endif %}
 {% endblock %}
