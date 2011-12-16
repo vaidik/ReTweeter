@@ -1,0 +1,31 @@
+{% extends "admin_page.html" %}
+
+{% block content %}
+
+	<table style="width: 70%;" border="1">
+		<tr>
+			<td width="10%">ID</td>
+			<td width="20%">Username</td>
+			<td width="30%">Name</td>
+			<td width="20%">Staff</td>
+			<td width="20%">Action</td>
+		</tr>
+
+		{% for user in users %}
+		<tr>
+			<td>{{ user.id }}</td>
+			<td>{{ user.username }}</td>
+			<td>{{ user.first_name }} {{ user.last_name }}</td>
+			<td>{{ user.is_staff }}</td>
+			<td>
+				{% if user.is_staff %}
+					<a href="/users/remove_staff/{{ user.id }}/">Remove Staff</a>
+				{% else %}
+					<a href="/users/add_staff/{{ user.id }}/">Make Staff</a>
+				{% endif %}
+			</td>
+		</tr>
+		{% endfor %}
+	</table>
+
+{% endblock %}
