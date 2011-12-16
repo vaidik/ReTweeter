@@ -74,6 +74,7 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 # Additional locations of static files
 STATICFILES_DIRS = (
 		os.path.join(APP_ROOT, 'templates/static'),
+		os.path.join(APP_ROOT, 'login/templates/static'),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -109,6 +110,9 @@ ROOT_URLCONF = 'retweeter.urls'
 
 TEMPLATE_DIRS = (
 		os.path.join(APP_ROOT, 'templates'),
+		os.path.join(APP_ROOT, 'login/templates'),
+		os.path.join(APP_ROOT, 'tweetmanager/templates'),
+		os.path.join(APP_ROOT, 'users/templates'),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -123,6 +127,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'retweeter.login',
     'retweeter.tweetmanager',
+    'retweeter.users',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
