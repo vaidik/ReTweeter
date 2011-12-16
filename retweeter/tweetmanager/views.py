@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.template import RequestContext
 from retweeter.tweetmanager.forms import TweetForm
 from retweeter.utils.helpers import render_page
+from django.contrib.auth.decorators import permission_required
 import datetime
 
 @login_required
@@ -31,6 +32,9 @@ def tweets_submit(request):
 
 @login_required
 def moderate(request):
+	if not request.user.is_staff:
+		return HttpResponseRedirect('/')
+
 	data = {}
 
 	t = Tweets.objects.filter(status=0)
@@ -40,6 +44,9 @@ def moderate(request):
 
 @login_required
 def dashboard(request):
+	if not request.user.is_staff:
+		return HttpResponseRedirect('/')
+
 	data = {}
 
 	t = Tweets.objects.filter(status=0)
@@ -49,6 +56,9 @@ def dashboard(request):
 
 @login_required
 def approve(request, tweet_id):
+	if not request.user.is_staff:
+		return HttpResponseRedirect('/')
+
 	t = Tweets.objects.get(id=tweet_id)
 	t.status = 1
 	t.approver = User.objects.get(username=request.user.username)
@@ -58,6 +68,9 @@ def approve(request, tweet_id):
 
 @login_required
 def disapprove(request, tweet_id):
+	if not request.user.is_staff:
+		return HttpResponseRedirect('/')
+
 	t = Tweets.objects.get(id=tweet_id)
 	t.status = -1
 	t.approver = User.objects.get(username=request.user.username)

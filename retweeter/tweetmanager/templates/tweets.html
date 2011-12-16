@@ -4,7 +4,7 @@
 
 	<div style="width: 75%; float: left;">
 		<table style="width: 100%;" border="1">
-			<tr>
+			<tr class="">
 				<td width="55%">Tweet</td>
 				<td width="10%">Status</td>
 				<td width="15%" align="center">Twitter Link</td>
@@ -33,7 +33,6 @@
 
 	<div style="width: 24%; float: right;">
 		<h2>Submit your tweet</h2>
-		<div>Share it on behalf of @somecompany</div>
 
 		<form method="POST" action="/tweets/submit/">
 			{% csrf_token %}
