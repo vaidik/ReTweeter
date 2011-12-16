@@ -1,0 +1,28 @@
+{% extends "admin_page.html" %}
+
+{% block content %}
+
+	<div style="width: 100%%;">
+		<table style="width: 100%;" border="1">
+			<tr>
+				<td width="50%">Tweet</td>
+				<td width="8%">User</td>
+				<td align="center">Submitted on</td>
+				<td align="center">Action</td>
+			</tr>
+			{% for tweet in tweets %}
+			<tr>
+				<td>{{ tweet.tweet }}</td>
+				<td>{{ tweet.user.username }}</td>
+				<td align="center">{{ tweet.datetime }}</td>
+				<td align="center">
+					<a href="/tweets/moderate/approve/{{ tweet.id }}">Approve</a>
+					|
+					<a href="/tweets/moderate/disapprove/{{ tweet.id }}">Disapprove</a>
+				</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+
+{% endblock %}

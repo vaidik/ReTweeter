@@ -8,4 +8,8 @@ def home(request):
 	if not request.user.is_authenticated():
 		return HttpResponseRedirect('/accounts/login/')
 
-	return render_to_response('logged_in_page.html', {'user': request.user})
+	if request.user.is_staff():
+		return HttpResponseRedirect('/tweets/dashboard/')
+
+	else:
+		return HttpResponseRedirect('/tweets/')

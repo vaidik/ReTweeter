@@ -11,12 +11,13 @@ import datetime
 @login_required
 def tweets(request):
 	user = User.objects.get(username=request.user.username)
-	t = Tweets.objects.order_by('-datetime').filter(user=user, status=0)
 
+	t = Tweets.objects.order_by('-datetime').filter(user=user, status=0)
 	form = TweetForm()
 
 	return render_to_response('tweets.html', {'tweets': t, 'form': form}, context_instance=RequestContext(request))
 
+@login_required
 def tweets_submit(request):
 	if not request.user.is_authenticated():
 		return HttpResponseRedirect('/accounts/login/?next=/tweets/')
@@ -26,4 +27,39 @@ def tweets_submit(request):
 
 	t.save()
 	return HttpResponseRedirect('/tweets/?msg=success')
-	#return HttpResponseRedirect('/tweets/?error')
+
+@login_required
+def moderate(request):
+	data = {}
+
+	t = Tweets.objects.filter(status=0)
+	data['tweets'] = t
+
+	return render_to_response('moderate.html', data)
+
+@login_required
+def dashboard(request):
+	data = {}
+
+	t = Tweets.objects.filter(status=0)
+	data['pending'] = len(t)
+
+	return render_to_response('dashboard.html', data)
+
+@login_required
+def approve(request, tweet_id):
+	t = Tweets.objects.get(id=tweet_id)
+	t.status = 1
+	t.approver = User.objects.get(username=request.user.username)
+	t.save()
+
+	return HttpResponseRedirect('/tweets/moderate/')
+
+@login_required
+def disapprove(request, tweet_id):
+	t = Tweets.objects.get(id=tweet_id)
+	t.status = -1
+	t.approver = User.objects.get(username=request.user.username)
+	t.save()
+
+	return HttpResponseRedirect('/tweets/moderate/')

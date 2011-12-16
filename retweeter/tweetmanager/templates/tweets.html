@@ -1,4 +1,4 @@
-{% extends "logged_in_page.html" %}
+{% extends "user_page.html" %}
 
 {% block content %}
 
@@ -8,7 +8,7 @@
 				<td width="55%">Tweet</td>
 				<td width="10%">Status</td>
 				<td width="15%" align="center">Twitter Link</td>
-				<td>Approved By</td>
+				<td>Moderated By</td>
 			</tr>
 			{% for tweet in tweets %}
 			<tr>

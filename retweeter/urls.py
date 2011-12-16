@@ -14,8 +14,15 @@ urlpatterns = patterns('',
 		(r'^accounts/logout/$', logout, {'next_page': '/'}),
 		(r'^accounts/register/$', 'login.views.register'),
 		(r'^accounts/profile/$', 'login.views.profile'),
+
 		(r'^tweets/$', 'tweetmanager.views.tweets'),
 		(r'^tweets/submit/$', 'tweetmanager.views.tweets_submit'),
+
+		(r'^tweets/dashboard/$', 'tweetmanager.views.dashboard'),
+
+		(r'^tweets/moderate/$', 'tweetmanager.views.moderate'),
+		(r'^tweets/moderate/approve/(\d+)/$', 'tweetmanager.views.approve'),
+		(r'^tweets/moderate/disapprove/(\d+)/$', 'tweetmanager.views.disapprove'),
     # Examples:
     # url(r'^$', 'retweeter.views.home', name='home'),
     # url(r'^retweeter/', include('retweeter.foo.urls')),
