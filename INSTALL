@@ -1,0 +1,72 @@
+Dependencies:
+* Python 2.0 or higher (not Python 3)
+* Django 1.3.1
+
+Python Libraries:
+* Tweepy (https://github.com/tweepy/tweepy)
+
+Intallation:
+* Install all the dependencies and Python libraries.
+
+* Clone the Master branch of https://github.com/vaidikkp/ReTweeter/.
+  git clone https://github.com/vaidikkp/ReTweeter.git
+
+* Change directory to ReTweeter/retweeter
+  cd ReTweeter/retweeter
+
+* Open settings.py file with your favourite Text editor.
+
+* Edit the settings.py file:
+
+  # First edit. Provide database details.
+  # Remember that if you are using any database engine other than sqlite3, then your database should be create before you proceed to the next step.
+
+  DATABASES = {
+      'default': {
+          'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+          'NAME': '',                      # Or path to database file if using sqlite3.
+          'USER': '',                      # Not used with sqlite3.
+          'PASSWORD': '',                  # Not used with sqlite3.
+          'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+          'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+      }
+  }
+
+  ###################
+
+  # Second edit. Provide Twitter OAuth credentials for the account you want to use for your organisation.
+  ## For this, visit https://dev.twitter.com/. Login with your organisation's account.
+  ## Click on "Create an App" or visit https://dev.twitter.com/apps/new.
+  ## Provide all the required details in the form and submit.
+  ## If you entered everything right in the form, you will be taken to the "Details" tab of your Twitter application.
+  ## On this page, find "OAuth Settings".
+  ## If the "Access level" is set to "Read-only", then go to the "Settings" tab.
+  ## In the "Application Type" section, change "Access" to "Read and Write". Submit this form to save the changes.
+  ## Go back to the "Details" tab. At the bottom of the page, click the button that says "Create my access token".
+  ## If the "Access level" is set to "Read and write", then skip the steps of going to the "Settings" tab. Just create the access token.
+  ## Make sure the access tokens created were of access level "Read and write". If your access level was set by you to Read and Write and
+     the token you created was not of the same access level, then click the button that says "Recreate my access token".
+  ## Copy the Consumer Key, Consumer Secret, Access Token and Access Token Secret.
+  ## Paste them in the variables in the settings.py file.
+  
+  CONSUMER_KEY = ""
+  CONSUMER_SERET = ""
+  ACCESS_TOKEN = ""
+  ACCESS_TOKEN_SECRET = ""
+
+  ###################
+
+* Run the following command:
+  django-admin syncdb
+
+* You will be prompted to create a superuser. Go ahead and create one. IT IS REQUIRED TO HAVE A SUPERUSER!
+
+* The above command will create all the required database tables.
+
+* To test the application, run the following command:
+  ./manage.py runserver
+
+* Open a web browser and go to the following URL:
+  http://localhost:8000
+
+* Login with the SUPERUSER you created.

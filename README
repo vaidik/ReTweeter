@@ -12,3 +12,17 @@ Public License. A copy of the license is present in the root of the
 repository.
 
 This project is hosted at https://github.com/vaidikkp/ReTweeter.
+
+-----------------------------------------------------------------------
+CURRENT STATUS
+-----------------------------------------------------------------------
+
+In this version:
+
+* The project is functional.
+* The UI is UGLY (sorry for that).
+
+In the coming versions, work will be done majorly:
+* On improving the UI.
+* On adding more functionality.
+* Towards making ReTweeter a more generic software.

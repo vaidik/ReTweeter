@@ -24,7 +24,11 @@
 						{% endif %}
 					{% endif %}
 				</td>
-				<td align="center"><a href="https://twitter.com/vaidikkapoor/statuses/{{ tweet.twitter_id }}">Link</a></td>
+				<td align="center">
+					{% if tweet.twitter_id %}
+						<a href="https://twitter.com/{{ globals.twitter_account }}/statuses/{{ tweet.twitter_id }}">Link</a>
+					{% endif %}
+				</td>
 				<td>{{ tweet.approver.username }}</td>
 			</tr>
 			{% endfor %}
