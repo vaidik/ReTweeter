@@ -15,9 +15,9 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'retweeter',                      # Or path to database file if using sqlite3.
-        'USER': 'root',                      # Not used with sqlite3.
+        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': '',                      # Or path to database file if using sqlite3.
+        'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
@@ -157,7 +157,7 @@ LOGGING = {
     }
 }
 
-CONSUMER_KEY = "Ifr49NXWornWNpk7tW4JEg"
-CONSUMER_SERET = "qWd3u6K9zF1cRGogqO29AKTsJkQ9pluG133YczUprg"
-ACCESS_TOKEN = "97657711-4JY2SigScYzjSGDRLBvpMLUJuSs3tph8ZLbsQpEbq"
-ACCESS_TOKEN_SECRET = "bezvNQ7CNNyNKF7CpWtr1ucEKuzRJzC2Vl2sUjy0urw"
+CONSUMER_KEY = ""
+CONSUMER_SERET = ""
+ACCESS_TOKEN = ""
+ACCESS_TOKEN_SECRET = ""
