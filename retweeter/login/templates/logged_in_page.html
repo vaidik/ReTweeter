@@ -19,6 +19,18 @@
 		<div style="clear: both;"></div>
 	</div>
 
+	{% if error %}
+		<div class="error">
+			Error
+		</div>
+	{% endif %}
+
+	{% if msg %}
+		<div class="msg">
+			Msg
+		</div>
+	{% endif %}
+
 	<div class="content">
 		{% block content %}
 		{% endblock %}
