@@ -151,3 +151,8 @@ LOGGING = {
         },
     }
 }
+
+CONSUMER_KEY = ""
+CONSUMER_SERET = ""
+ACCESS_TOKEN = ""
+ACCESS_TOKEN_SECRET = ""

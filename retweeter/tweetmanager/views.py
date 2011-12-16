@@ -1,13 +1,15 @@
+from django.conf import settings
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.contrib.auth.decorators import login_required
-from retweeter.tweetmanager.models import Tweets
 from django.contrib.auth.models import User
 from django.template import RequestContext
-from retweeter.tweetmanager.forms import TweetForm
-from retweeter.utils.helpers import render_page
 from django.contrib.auth.decorators import permission_required
+from retweeter.tweetmanager.forms import TweetForm
+from retweeter.tweetmanager.models import Tweets
+from retweeter.utils.helpers import render_page
+from retweeter.tweetmanager import twitter
 import datetime
 
 @login_required
@@ -60,8 +62,17 @@ def approve(request, tweet_id):
 		return HttpResponseRedirect('/')
 
 	t = Tweets.objects.get(id=tweet_id)
-	t.status = 1
-	t.approver = User.objects.get(username=request.user.username)
+
+	try:
+		api = twitter.api_obj(settings.CONSUMER_KEY, settings.CONSUMER_SERET, settings.ACCESS_TOKEN, settings.ACCESS_TOKEN_SECRET)
+		tweet_id = twitter.tweet(api, t.tweet)
+
+		t.twitter_id = tweet_id
+		t.status = 1
+		t.approver = User.objects.get(username=request.user.username)
+	except:
+		pass
+
 	t.save()
 
 	return HttpResponseRedirect('/tweets/moderate/')
