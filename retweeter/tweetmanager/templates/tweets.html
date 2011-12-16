@@ -13,7 +13,17 @@
 			{% for tweet in tweets %}
 			<tr>
 				<td>{{ tweet.tweet }}</td>
-				<td>{{ tweet.status }}</td>
+				<td>
+					{% if tweet.status == 1 %}
+						Approved
+					{% else %}
+						{% if tweet.status == -1 %}
+							Rejected
+						{% else %}
+							Pending
+						{% endif %}
+					{% endif %}
+				</td>
 				<td align="center">{{ tweet.twitter_id }}</td>
 				<td>{{ tweet.approver.username }}</td>
 			</tr>
