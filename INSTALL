@@ -49,12 +49,16 @@ Intallation:
   ## Copy the Consumer Key, Consumer Secret, Access Token and Access Token Secret.
   ## Paste them in the variables in the settings.py file.
   
-  CONSUMER_KEY = ""
-  CONSUMER_SERET = ""
-  ACCESS_TOKEN = ""
-  ACCESS_TOKEN_SECRET = ""
+  CONSUMER_KEY = "<consumer_key>"
+  CONSUMER_SERET = "<consumer_secret>"
+  ACCESS_TOKEN = "<access_token>"
+  ACCESS_TOKEN_SECRET = "<access_token_secret>"
 
   ###################
+
+  # Third edit. Provide your organisations Twitter username.
+
+  ## TWITTER_ACCOUNT = "<twitter_username_of_your_organization>"
 
 * Run the following command:
   django-admin syncdb
