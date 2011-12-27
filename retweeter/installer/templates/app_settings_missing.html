@@ -1,0 +1,14 @@
+{% extends "install_base.html" %}
+{% block heading %}
+App Settings Missing
+{% endblock %}
+
+{% block content %}
+  <p>Your App Settings are missing.</p>
+  <p>Submit this form with the required data to provide App Settings:</p>
+  <form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save and Authorize">
+  </form>
+{% endblock %}

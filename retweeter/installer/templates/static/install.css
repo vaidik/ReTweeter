@@ -1,0 +1,15 @@
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  padding: 10px;
+
+  background: #eee;
+}
+
+.container h1 {
+  margin: 0;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px dotted black;
+}

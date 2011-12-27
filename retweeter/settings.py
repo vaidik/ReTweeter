@@ -75,6 +75,7 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 STATICFILES_DIRS = (
 		os.path.join(APP_ROOT, 'templates/static'),
 		os.path.join(APP_ROOT, 'login/templates/static'),
+		os.path.join(APP_ROOT, 'installer/templates/static'),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -104,6 +105,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'retweeter.installer.middleware.CheckInstallation',
+    'retweeter.installer.middleware.CheckInstallation',
 )
 
 ROOT_URLCONF = 'retweeter.urls'
@@ -128,6 +131,7 @@ INSTALLED_APPS = (
     'retweeter.login',
     'retweeter.tweetmanager',
     'retweeter.users',
+    'retweeter.installer',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -163,3 +167,5 @@ CONSUMER_KEY = ""
 CONSUMER_SERET = ""
 ACCESS_TOKEN = ""
 ACCESS_TOKEN_SECRET = ""
+
+from app_settings import *

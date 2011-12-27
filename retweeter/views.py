@@ -4,7 +4,6 @@ from django.shortcuts import render_to_response
 from django.contrib.auth.decorators import login_required
 from django.utils.http import urlencode
 
-@login_required
 def home(request):
 	params = {}
 
@@ -24,6 +23,5 @@ def home(request):
 
 	if request.user.is_staff:
 		return HttpResponseRedirect('/tweets/dashboard/?' + params)
-
 	else:
 		return HttpResponseRedirect('/tweets/?' + params)

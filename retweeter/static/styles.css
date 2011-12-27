@@ -49,15 +49,23 @@ a, a:hover, a:visited {
 	margin: 10px;
 }
 
-.error {
+.msg_box {
 	padding: 8px;
 	width: 40%;
-	border: 1px red solid;
-	color: red;
 
 	text-align: center;
 
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 20px;
+}
+
+.error {
+	border: 1px red solid;
+	color: red;
+}
+
+.msg {
+	border: 1px green solid;
+	color: green;
 }

@@ -3,6 +3,7 @@ from retweeter import views
 from retweeter import login
 from retweeter import tweetmanager
 from retweeter import users
+from retweeter import installer
 from django.contrib.auth.views import logout
 
 # Uncomment the next two lines to enable the admin:
@@ -28,6 +29,9 @@ urlpatterns = patterns('',
 		(r'^users/$', 'users.views.users'),
 		(r'^users/add_staff/(\d+)/$', 'users.views.add_staff'),
 		(r'^users/remove_staff/(\d+)/$', 'users.views.remove_staff'),
+
+		(r'^install/$', 'installer.views.install'),
+		(r'^install/authorize/$', 'installer.views.authorize'),
     # Examples:
     # url(r'^$', 'retweeter.views.home', name='home'),
     # url(r'^retweeter/', include('retweeter.foo.urls')),
